@@ -1,0 +1,46 @@
+﻿基于Adminer 4.2.3开发版版本修改的文件：
+
+1.lang文件夹以及include/lang.inc.php（删减语言）
+
+2.3个剩余语言文件除了英文 EOF 插入
+{
+	'Logout and return to the Tieba Signer' => '登出並返回簽到助手',
+    'Or return to Tieba Signer' => '或是返回簽到助手',
+}//不同语言翻译不同
+
+3.Drivers:drivers文件夹（删减驱动，仅留下mysql）
+
+4.include/* REPLACE ../adminer >> ../ixlab_adminer
+
+5.登陆认证:
+1)include/function.inc.php Line 285~286 插入
+{
+    if ($_GET['server']==DB_HOST)
+	    return DB_PASSWD;
+}//LINE 286~287
+
+6.index.php Line 1~2 插入
+{
+/** Modified by FSGM-Howard@IXLAB START **/
+define('DATA_ACCESS','yes');
+require "./adminauth.php";
+if (!$auth && $_GET['server']==DB_HOST) { die("Token invaild or expired!"); }
+/** Modified by FSGM-Howard@IXLAB END **/
+
+}
+
+
+7.include/design.inc.php Line 125~130 改为
+{
+<p class="logout">
+<input type="button" name="logout" value="<?php echo lang('Logout'); ?>" id="logout" onclick="window.location.href='./?logout'">
+<input type="button" name="logout_and_return" value="<?php echo lang('Logout and return to the Tieba Signer'); ?>" id="logout_and_return" onclick="window.location.href='./?logout_and_return'">
+</p>
+}//Line 125~128
+
+8.include/auth.inc.php Line 146 改为
+{
+	page_header(lang('Login'), $error, null, "<a href='".SYSTEM_URL."'>".lang('Or return to Tieba Signer')."</a>");
+}
+
+9.添加的文件：ixlab_adminer.php & ixlab_adminer_show.php & ixlab_adminer_desc.php &ixlab_adminer_callback.php & adminauth.php
