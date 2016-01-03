@@ -1,10 +1,4 @@
 <?php
-/** Modified by FSGM-Howard@IXLAB START **/
-define('DATA_ACCESS','yes');
-require "./adminauth.php";
-if (!$auth && $_GET['server']==DB_HOST) { die("Token invaild or expired!"); }
-/** Modified by FSGM-Howard@IXLAB END **/
-
 /** Adminer - Compact database management
 * @link https://www.adminer.org/
 * @author Jakub Vrana, http://www.vrana.cz/

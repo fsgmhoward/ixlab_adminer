@@ -23,12 +23,12 @@ function page_header($title, $error = "", $breadcrumb = array(), $title2 = "") {
 <meta name="robots" content="noindex">
 <meta name="referrer" content="origin-when-crossorigin">
 <title><?php echo $title_page; ?></title>
-<link rel="stylesheet" type="text/css" href="../ixlab_adminer/static/default.css">
-<script type="text/javascript" src="../ixlab_adminer/static/functions.js"></script>
+<link rel="stylesheet" type="text/css" href="../adminer/static/default.css">
+<script type="text/javascript" src="../adminer/static/functions.js"></script>
 <script type="text/javascript" src="static/editing.js"></script>
 <?php if ($adminer->head()) { ?>
-<link rel="shortcut icon" type="image/x-icon" href="../ixlab_adminer/static/favicon.ico">
-<link rel="apple-touch-icon" href="../ixlab_adminer/static/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="../adminer/static/favicon.ico">
+<link rel="apple-touch-icon" href="../adminer/static/favicon.ico">
 <?php if (file_exists("adminer.css")) { ?>
 <link rel="stylesheet" type="text/css" href="adminer.css">
 <?php } ?>
@@ -122,10 +122,12 @@ function page_footer($missing = "") {
 
 <?php switch_lang(); ?>
 <?php if ($missing != "auth") { ?>
+<form action="" method="post">
 <p class="logout">
-<input type="button" name="logout" value="<?php echo lang('Logout'); ?>" id="logout" onclick="window.location.href='./?logout'">
-<input type="button" name="logout_and_return" value="<?php echo lang('Logout and return to the Tieba Signer'); ?>" id="logout_and_return" onclick="window.location.href='./?logout_and_return'">
+<input type="submit" name="logout" value="<?php echo lang('Logout'); ?>" id="logout">
+<input type="hidden" name="token" value="<?php echo $token; ?>">
 </p>
+</form>
 <?php } ?>
 <div id="menu">
 <?php $adminer->navigation($missing); ?>

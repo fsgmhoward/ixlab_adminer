@@ -265,6 +265,4 @@ $translations = array(
 	'Permanent link' => '固定链接',
 	'Edit all' => '编辑全部',
 	'HH:MM:SS' => 'HH:MM:SS',
-	'Logout and return to the Tieba Signer' => '登出并返回签到助手',
-    'Or return to Tieba Signer' => '或是返回签到助手',
 );
