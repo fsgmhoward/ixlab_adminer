@@ -11,6 +11,9 @@ loadhead();
 <form action="" method="post">
 <input name="submit" type="submit" class="btn btn-primary" value="进入Adminer数据库编辑器" />
 </form>
+<br />
+<br />
+<p>Copyright &copy; FSGM-Howard, 2015-2016. All rights reserved.</p>
 <?php
 loadfoot();
 if (isset($_POST['submit'])){

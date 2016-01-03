@@ -49,7 +49,7 @@ if (defined('TIEBASIGNER_INSTALLED') && !$auth && $_GET['server']==DB_HOST) { di
 
 8.include/auth.inc.php Line 146 改为
 {
-	page_header(lang('Login'), $error, null, "<a href='".SYSTEM_URL."'>".lang('Or return to Tieba Signer')."</a>");
+	!defined('TIEBASIGNER_INSTALLED') ? page_header(lang('Login'), $error, null) : page_header(lang('Login'), $error, null, "<a href='".SYSTEM_URL."'>".lang('Or return to Tieba Signer')."</a>");
 }
 
 9.添加的文件：ixlab_adminer.php & ixlab_adminer_show.php & ixlab_adminer_desc.php &ixlab_adminer_callback.php & adminauth.php
