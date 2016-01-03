@@ -23,12 +23,12 @@ function page_header($title, $error = "", $breadcrumb = array(), $title2 = "") {
 <meta name="robots" content="noindex">
 <meta name="referrer" content="origin-when-crossorigin">
 <title><?php echo $title_page; ?></title>
-<link rel="stylesheet" type="text/css" href="../adminer/static/default.css">
-<script type="text/javascript" src="../adminer/static/functions.js"></script>
+<link rel="stylesheet" type="text/css" href="../ixlab_adminer/static/default.css">
+<script type="text/javascript" src="../ixlab_adminer/static/functions.js"></script>
 <script type="text/javascript" src="static/editing.js"></script>
 <?php if ($adminer->head()) { ?>
-<link rel="shortcut icon" type="image/x-icon" href="../adminer/static/favicon.ico">
-<link rel="apple-touch-icon" href="../adminer/static/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="../ixlab_adminer/static/favicon.ico">
+<link rel="apple-touch-icon" href="../ixlab_adminer/static/favicon.ico">
 <?php if (file_exists("adminer.css")) { ?>
 <link rel="stylesheet" type="text/css" href="adminer.css">
 <?php } ?>

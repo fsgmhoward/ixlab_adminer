@@ -1,7 +1,7 @@
 <?php
 error_reporting(6135); // errors and warnings
 
-include "../adminer/include/coverage.inc.php";
+include "../ixlab_adminer/include/coverage.inc.php";
 
 // disable filter.default
 $filter = !preg_match('~^(unsafe_raw)?$~', ini_get("filter.default"));
@@ -20,10 +20,10 @@ if (function_exists("mb_internal_encoding")) {
 
 // used only in compiled file
 if (isset($_GET["file"])) {
-	include "../adminer/file.inc.php";
+	include "../ixlab_adminer/file.inc.php";
 }
 
-include "../adminer/include/functions.inc.php";
+include "../ixlab_adminer/include/functions.inc.php";
 
 global $adminer, $connection, $drivers, $edit_functions, $enum_length, $error, $functions, $grouping, $HTTPS, $inout, $jush, $LANG, $langs, $on_actions, $permanent, $structured_types, $has_token, $token, $translations, $types, $unsigned, $VERSION; // allows including Adminer inside a function
 
@@ -56,19 +56,19 @@ if (get_magic_quotes_runtime()) {
 @ini_set("zend.ze1_compatibility_mode", false); // @ - deprecated
 @ini_set("precision", 20); // @ - can be disabled
 
-include "../adminer/include/lang.inc.php";
-include "../adminer/lang/$LANG.inc.php";
-include "../adminer/include/pdo.inc.php";
-include "../adminer/include/driver.inc.php";
-include "../adminer/drivers/sqlite.inc.php";
-include "../adminer/drivers/pgsql.inc.php";
-include "../adminer/drivers/oracle.inc.php";
-include "../adminer/drivers/mssql.inc.php";
-include "../adminer/drivers/firebird.inc.php";
-include "../adminer/drivers/simpledb.inc.php";
-include "../adminer/drivers/mongo.inc.php";
-include "../adminer/drivers/elastic.inc.php";
-include "../adminer/drivers/mysql.inc.php"; // must be included as last driver
+include "../ixlab_adminer/include/lang.inc.php";
+include "../ixlab_adminer/lang/$LANG.inc.php";
+include "../ixlab_adminer/include/pdo.inc.php";
+include "../ixlab_adminer/include/driver.inc.php";
+include "../ixlab_adminer/drivers/sqlite.inc.php";
+include "../ixlab_adminer/drivers/pgsql.inc.php";
+include "../ixlab_adminer/drivers/oracle.inc.php";
+include "../ixlab_adminer/drivers/mssql.inc.php";
+include "../ixlab_adminer/drivers/firebird.inc.php";
+include "../ixlab_adminer/drivers/simpledb.inc.php";
+include "../ixlab_adminer/drivers/mongo.inc.php";
+include "../ixlab_adminer/drivers/elastic.inc.php";
+include "../ixlab_adminer/drivers/mysql.inc.php"; // must be included as last driver
 
 define("SERVER", $_GET[DRIVER]); // read from pgsql=localhost
 define("DB", $_GET["db"]); // for the sake of speed and size
@@ -79,11 +79,11 @@ define("ME", preg_replace('~^[^?]*/([^?]*).*~', '\\1', $_SERVER["REQUEST_URI"]) 
 	. (DB != "" ? 'db=' . urlencode(DB) . '&' . (isset($_GET["ns"]) ? "ns=" . urlencode($_GET["ns"]) . "&" : "") : '')
 );
 
-include "../adminer/include/version.inc.php";
+include "../ixlab_adminer/include/version.inc.php";
 include "./include/adminer.inc.php";
-include "../adminer/include/design.inc.php";
-include "../adminer/include/xxtea.inc.php";
-include "../adminer/include/auth.inc.php";
+include "../ixlab_adminer/include/design.inc.php";
+include "../ixlab_adminer/include/xxtea.inc.php";
+include "../ixlab_adminer/include/auth.inc.php";
 
 if (!ini_bool("session.use_cookies") || @ini_set("session.use_cookies", false) !== false) { // @ - may be disabled
 	session_write_close(); // improves concurrency if a user opens several pages at once, may be restarted later
