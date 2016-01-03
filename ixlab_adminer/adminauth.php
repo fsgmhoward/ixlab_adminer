@@ -1,40 +1,43 @@
 <?php
+//Written by Howard Liu on Jan 3, 2016
+//Copyright (c) Howard Liu, 2016. All rights reserved
+//For more information about software license, please refer to ../LICENSE
+//This file used WMZZ's Library
+
 if (!defined('DATA_ACCESS')) { die('Insufficient Permissions'); }
-if (!isset($_COOKIE['adminer_token'])) { $auth = false; }
+if (file_exists('../../config.php')){
+    define('TIEBASIGNER_INSTALLED', TRUE);
 
-define('SYSTEM_ROOT','yes');
-require "../../config.php";
+    if (!isset($_COOKIE['adminer_token'])) { $auth = false; }
 
-$conn = mysql_connect(DB_HOST,DB_USER,DB_PASSWD);
-mysql_select_db(DB_NAME,$conn);
-
-$system_url = mysql_query('SELECT * FROM '.DB_PREFIX.'options WHERE name="system_url"');
-$system_url = mysql_fetch_array($system_url);
-define('SYSTEM_URL',$system_url['value']);
-
-if (isset($_GET['logout_and_return'])){
-    if (isset($_COOKIE['adminer_token'])){
-        mysql_query('DELETE FROM '.DB_PREFIX.'ixlab_adminer WHERE token="'.$_COOKIE['adminer_token'].'"');
-        setcookie("adminer_token", $_COOKIE['adminer_token'], time()-1);
+    if (extension_loaded('mysqli')) {
+        include "../../lib/class.mysqli.php";
+    }else{
+        include "../../lib/class.mysql.php";
     }
-    header("Location: ".SYSTEM_URL);
-}
 
-if (isset($_GET['logout'])){
-    if (isset($_COOKIE['adminer_token'])){
-        mysql_query('DELETE FROM '.DB_PREFIX.'ixlab_adminer WHERE token="'.$_COOKIE['adminer_token'].'"');
-        setcookie("adminer_token", $_COOKIE['adminer_token'], time()-1);
-    }
-    header("Location: ./");
-}
+    define('SYSTEM_ROOT','yes');
+    require "../../config.php";
 
-$result = mysql_query("SELECT * FROM ".DB_PREFIX."ixlab_adminer WHERE token='".$_COOKIE['adminer_token']."'");
-$auth = false;
-while ($row = mysql_fetch_array($result)){
-    if ($row['expire_time']>=time()){
-        mysql_query('UPDATE '.DB_PREFIX.'ixlab_adminer SET expire_time='.(time()+600).' WHERE token="'.$_COOKIE['adminer_token'].'"');
-        setcookie("adminer_token", $_COOKIE['adminer_token'], time()+600, "/");
-        $auth = true;
+    $conn = new wmysql(DB_HOST,DB_USER,DB_PASSWD,DB_NAME);
+
+    $system_url = $conn->fetch_array($conn->query('SELECT * FROM `'.DB_PREFIX.'options` WHERE `name`="system_url";'));
+    define('SYSTEM_URL',$system_url['value']);
+
+    if (isset($_GET['logout'])){
+        if (isset($_COOKIE['adminer_token'])){
+            $conn->query('DELETE FROM `'.DB_PREFIX.'ixlab_adminer` WHERE `token`="'.$_COOKIE['adminer_token'].'";');
+            setcookie("adminer_token", '', time()-1, '/');
+        }
+        header("Location: ".(isset($_GET['return']) ? SYSTEM_URL : "./"));
+    }
+
+    $auth = false;
+    while ($row = $conn->fetch_array($conn->query("SELECT * FROM `".DB_PREFIX."ixlab_adminer` WHERE `token`='".$_COOKIE['adminer_token']."';"))){
+        if ($row['expire_time']>=time()){
+            $conn->query('UPDATE '.DB_PREFIX.'ixlab_adminer SET expire_time='.(time()+600).' WHERE token="'.$_COOKIE['adminer_token'].'"');
+            setcookie('adminer_token', $_COOKIE['adminer_token'], time()+600, '/');
+            $auth = true;
+        }
     }
 }
-?>
