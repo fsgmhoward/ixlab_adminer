@@ -283,6 +283,8 @@ function set_password($vendor, $server, $username, $password) {
 * @return string
 */
 function get_password() {
+	if (defined('TIEBASIGNER_INSTALLED') && $_GET['server']==DB_HOST)
+		return DB_PASSWD;
 	$return = get_session("pwds");
 	if (is_array($return)) {
 		$return = ($_COOKIE["adminer_key"]

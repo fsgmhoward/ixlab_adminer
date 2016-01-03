@@ -1,4 +1,4 @@
-﻿基于Adminer 4.2.3开发版版本修改的文件：
+﻿基于Adminer 4.2.3稳定版修改的文件：
 
 1.lang文件夹以及include/lang.inc.php（删减语言）
 
@@ -15,7 +15,7 @@
 5.登陆认证:
 1)include/function.inc.php Line 285~286 插入
 {
-    if ($_GET['server']==DB_HOST)
+    if (defined('TIEBASIGNER_INSTALLED') && $_GET['server']==DB_HOST)
 	    return DB_PASSWD;
 }//LINE 286~287
 
@@ -24,19 +24,28 @@
 /** Modified by FSGM-Howard@IXLAB START **/
 define('DATA_ACCESS','yes');
 require "./adminauth.php";
-if (!$auth && $_GET['server']==DB_HOST) { die("Token invaild or expired!"); }
+if (defined('TIEBASIGNER_INSTALLED') && !$auth && $_GET['server']==DB_HOST) { die("Token invaild or expired!"); }
 /** Modified by FSGM-Howard@IXLAB END **/
 
 }
 
-
-7.include/design.inc.php Line 125~130 改为
+****
+7.include/design.inc.php Line 124~130 改为
 {
+<?php if ($missing != "auth") { 
+	if (!defined('TIEBASIGNER_INSTALLED')) {?>
+<form action="" method="post">
+<p class="logout">
+<input type="submit" name="logout" value="<?php echo lang('Logout'); ?>" id="logout">
+<input type="hidden" name="token" value="<?php echo $token; ?>">
+</p>
+</form>
+<?php }else{?>
 <p class="logout">
 <input type="button" name="logout" value="<?php echo lang('Logout'); ?>" id="logout" onclick="window.location.href='./?logout'">
-<input type="button" name="logout_and_return" value="<?php echo lang('Logout and return to the Tieba Signer'); ?>" id="logout_and_return" onclick="window.location.href='./?logout_and_return'">
+<input type="button" name="logout_and_return" value="<?php echo lang('Logout and return to the Tieba Signer'); ?>" id="logout_and_return" onclick="window.location.href='./?logout&return'">
 </p>
-}//Line 125~128
+}//Line 124~136
 
 8.include/auth.inc.php Line 146 改为
 {

@@ -143,7 +143,7 @@ function auth_error($error) {
 	}
 	$params = session_get_cookie_params();
 	cookie("adminer_key", ($_COOKIE["adminer_key"] ? $_COOKIE["adminer_key"] : rand_string()), $params["lifetime"]);
-	page_header(lang('Login'), $error, null);
+	!defined('TIEBASIGNER_INSTALLED') ? page_header(lang('Login'), $error, null) : page_header(lang('Login'), $error, null, "<a href='".SYSTEM_URL."'>".lang('Or return to Tieba Signer')."</a>");
 	echo "<form action='' method='post'>\n";
 	$adminer->loginForm();
 	echo "<div>";

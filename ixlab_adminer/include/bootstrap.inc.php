@@ -60,14 +60,6 @@ include "../ixlab_adminer/include/lang.inc.php";
 include "../ixlab_adminer/lang/$LANG.inc.php";
 include "../ixlab_adminer/include/pdo.inc.php";
 include "../ixlab_adminer/include/driver.inc.php";
-include "../ixlab_adminer/drivers/sqlite.inc.php";
-include "../ixlab_adminer/drivers/pgsql.inc.php";
-include "../ixlab_adminer/drivers/oracle.inc.php";
-include "../ixlab_adminer/drivers/mssql.inc.php";
-include "../ixlab_adminer/drivers/firebird.inc.php";
-include "../ixlab_adminer/drivers/simpledb.inc.php";
-include "../ixlab_adminer/drivers/mongo.inc.php";
-include "../ixlab_adminer/drivers/elastic.inc.php";
 include "../ixlab_adminer/drivers/mysql.inc.php"; // must be included as last driver
 
 define("SERVER", $_GET[DRIVER]); // read from pgsql=localhost
