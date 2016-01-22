@@ -2,12 +2,12 @@
 if (!defined('SYSTEM_ROOT')) { die('Insufficient Permissions'); }
 /*
 Plugin Name: Adminer数据库编辑器
-Version: 1.4
+Version: 1.5.1
 Description: Adminer数据库编辑器,由4.2.3版本修改而来
 Author: FSGMHoward@IXLab
-Author Email: ixlab@qq.com
-Author URL: https://www.ixlab.ga/
-Plugin URL: http://www.stus8.com/forum.php?mod=viewthread&tid=4918
+Author Email: howard@ixnet.work
+Author URL: https://www.ixnet.ga/
+Plugin URL: https://blog.ixnet.work/2016/01/22/adminer/
 For: 不限
 */
 

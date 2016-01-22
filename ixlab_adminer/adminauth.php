@@ -2,7 +2,7 @@
 //Written by FSGM-Howard on Jan 3, 2016
 //Copyright (c) FSGM-Howard, 2016. All rights reserved
 //For more information about software license, please refer to ../LICENSE
-//This file used WMZZ's Library
+//This file uses WMZZ's Library
 
 if (!defined('DATA_ACCESS')) { die('Insufficient Permissions'); }
 if (file_exists('../../config.php')){
