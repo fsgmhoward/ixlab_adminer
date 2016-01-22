@@ -96,7 +96,7 @@ if (!$row) {
 <th><?php echo lang('Index Type'); ?>
 <th><input type="submit" style="left: -1000px; position: absolute;"><?php echo lang('Column (length)'); ?>
 <th><?php echo lang('Name'); ?>
-<th><noscript><input type='image' class='icon' name='add[0]' src='../adminer/static/plus.gif' alt='+' title='<?php echo lang('Add next'); ?>'></noscript>&nbsp;
+<th><noscript><input type='image' class='icon' name='add[0]' src='../ixlab_adminer/static/plus.gif' alt='+' title='<?php echo lang('Add next'); ?>'></noscript>&nbsp;
 </thead>
 <?php
 if ($primary) {
@@ -128,7 +128,7 @@ foreach ($row["indexes"] as $index) {
 		}
 
 		echo "<td><input name='indexes[$j][name]' value='" . h($index["name"]) . "' autocapitalize='off'>\n";
-		echo "<td><input type='image' class='icon' name='drop_col[$j]' src='../adminer/static/cross.gif' alt='x' title='" . lang('Remove') . "' onclick=\"return !editingRemoveRow(this, 'indexes\$1[type]');\">\n";
+		echo "<td><input type='image' class='icon' name='drop_col[$j]' src='../ixlab_adminer/static/cross.gif' alt='x' title='" . lang('Remove') . "' onclick=\"return !editingRemoveRow(this, 'indexes\$1[type]');\">\n";
 	}
 	$j++;
 }

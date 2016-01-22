@@ -10,7 +10,8 @@
 
 3.Drivers:drivers文件夹（删减驱动，仅留下mysql）
 
-4.include/* REPLACE ../adminer >> ../ixlab_adminer
+4.所有文件
+REPLACE ../adminer >> ../ixlab_adminer
 
 5.登陆认证:
 1)include/function.inc.php Line 285~286 插入
