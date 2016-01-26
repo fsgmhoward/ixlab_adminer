@@ -7,7 +7,7 @@ Adminer Database Manager for MoeNetwork Tiebasigner
 3. Successfully installed.
 
 ## More Information
-Chinese description here(中文介绍可看): [My Blog](https://blog.ixnet.work/2016/01/22/adminer/)
+Chinese description here(中文介绍可看): [My Blog](https://blog.ixnet.work/2016/01/22/adminer/). 
 The update log can also be seen there.
 
 ## License
