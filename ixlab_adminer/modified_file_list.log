@@ -1,6 +1,6 @@
-﻿基于Adminer 4.2.3稳定版修改的文件：
+﻿基于Adminer 4.2.4稳定版修改的文件：
 
-1.lang文件夹以及include/lang.inc.php（删减语言）
+1.lang文件夹以及include/lang.inc.php（删减语言，删除无用代码）
 
 2.3个剩余语言文件除了英文 EOF 插入
 {

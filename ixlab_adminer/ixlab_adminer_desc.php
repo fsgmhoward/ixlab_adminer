@@ -3,8 +3,8 @@
 return array(
 	'plugin' => array(
 		'name'        => 'Adminer数据库编辑器',            //插件名称，必填
-		'version'     => '1.5.1',                 //插件版本号
-		'description' => 'Adminer数据库编辑器,由4.2.3版本修改而来',  //插件描述
+		'version'     => '1.6',                 //插件版本号
+		'description' => 'Adminer数据库编辑器,由4.2.4版本修改而来',  //插件描述
 		'onsale'      =>  false,                 //bool 插件是否已在产品中心上架
 		'url'         => 'https://blog.ixnet.work/2016/01/22/adminer/',  //插件地址，比如哪里可以下载到这个插件
 		'for'         => 'all',                 //适用的云签到版本，all为所有版本，版本后面跟+表示适用于该版本或更高版本，如V4.0+
