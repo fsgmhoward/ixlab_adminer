@@ -1,11 +1,11 @@
 #用于贴吧云签到的Adminer数据库管理器
 --------
 ##更新日志：
-0.更新到内核V4.2.4
-1.修改了language.inc.php，删除了多余代码
-2.修改了modified_file_list.log，换行码改为了UNIX格式，即\n
-3.版权保留了Apache License 2.0协议
-4.微小的视觉体验上的修复
+1.更新到内核V4.2.4
+2.修改了language.inc.php，删除了多余代码
+3.修改了modified_file_list.log，换行码改为了UNIX格式，即\n
+4.版权保留了Apache License 2.0协议
+5.微小的视觉体验上的修复
 ###原版更新内容：
 ```
 1.支持PHP7
