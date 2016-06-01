@@ -1,9 +1,6 @@
 <?php
-/** Modified by FSGM-Howard@IXLAB START **/
-define('DATA_ACCESS','yes');
-require "./adminauth.php";
-if (defined('TIEBASIGNER_INSTALLED') && !$auth && $_GET['server']==DB_HOST) { die("Token invaild or expired!"); }
-/** Modified by FSGM-Howard@IXLAB END **/
+// 防止非法用户使用Adminer连接云签服务器
+require 'adminauth.php';
 
 /** Adminer - Compact database management
 * @link https://www.adminer.org/

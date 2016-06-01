@@ -1,50 +1,50 @@
 <?php
-if (!defined('SYSTEM_ROOT')) { die('Insufficient Permissions'); }
-if (ROLE != 'admin') { die('Insufficient Permissions'); }
-include __DIR__.'/ixnetwork_version.func.php';
-$returnValue = include __DIR__.'/ixlab_adminer_desc.php';
-$ixnetwork_versionCheck = ixnetwork_version('ixlab_adminer.plugin.fsgmhoward.php', $returnValue['plugin']['version']);
+if (!defined('SYSTEM_ROOT') || ROLE != 'admin') { die('Insufficient Permissions'); }
+
+if (isset($_GET['go'])){
+    // 检查SESSION，如果没激活则激活SESSION
+    if (version_compare(phpversion(), '5.4.0', '<')) {
+        // 快升级你的PHP！
+        if(session_id() == '') {
+            session_start();
+        }
+    } elseif (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // 保存一个已经认证的SESSION，加入这个isset则通过认证
+    $_SESSION['ixnet_adminer_auth'] = true;
+    header("Location:./plugins/ixlab_adminer/?server=".DB_HOST."&username=".DB_USER."&db=".DB_NAME);
+    exit;
+}
+
+require_once 'ixnet_helpers.php';
+$returnValue = require 'ixlab_adminer_desc.php';
+$version = ixnet_helpers_version('ixlab_adminer.plugin.fsgmhoward.php', $returnValue['plugin']['version']);
 loadhead();
 ?>
-<br />
-<br />
-<br />
-<br />
-<h5>点击此键即可进入Adminer数据库编辑器</h5>
-<form action="" method="post">
-<input name="submit" type="submit" class="btn btn-primary" value="进入Adminer数据库编辑器" />
-</form>
-<br />
-<?php
-if(!$ixnetwork_versionCheck['IsUpToDate']){
-    echo "Adminer管理器插件有新版本：".$ixnetwork_versionCheck['RemoteVersion']."，当前版本为".$ixnetwork_versionCheck['CurrentVersion'];
-    echo "<br />请前往<a href='https://blog.ixnet.work/2016/01/22/adminer/' target='_blank'>https://blog.ixnet.work/2016/01/22/adminer/</a>查看新版下载地址";
-}else{
-    echo "版本检查完毕，你的插件是最新版本";
-}
-?>
-<br />
-<br />
-<br />
-<br />
-<p>Copyright &copy; <a href="https://www.ixnet.work">Howard Liu</a>, 2015-2016. All rights reserved.</p>
+
+<div class="panel panel-info">
+    <div class="panel-heading">Adminer数据库管理器</div>
+    <div class="panel-body">
+        <p class="text-primary">点击此键即可进入Adminer数据库编辑器</p>
+        <a class="btn btn-default" href="?plugin=ixlab_adminer&go=yes" target="_blank">进入Adminer数据库编辑器</a>
+        <hr size="2px">
+        <?php
+        if(!$version['isUpToDate']) {
+            echo '<p>Adminer管理器插件有新版本：<span class="text-info">'.$version['remoteVersion'].'</span>，当前版本为：<span class="text-info">'.$version['currentVersion'].'</span></p>';
+            if (isset($version['raw']['data']['updates'][$version['remoteVersion']])) {
+                echo '<p class="text-info">'.$version['remoteVersion'].'版本更新内容：'.$version['raw']['data']['updates'][$version['remoteVersion']].'。</p>';
+            }
+            echo '<p>请前往<a href="https://blog.ixnet.work/2016/01/22/adminer/" target="_blank">https://blog.ixnet.work/2016/01/22/adminer/</a>下载最新版本。</p>';
+        } else {
+            echo '<p>版本检查完毕，你的插件是最新版本</p>';
+        }
+        echo '<p>当前版本分支为'.$version['branch'].'。</p>';
+        ?>
+        <hr size="2px">
+        <p class="text-muted">Copyright &copy; <a href="https://www.ixnet.work">IX Network</a>, 2015-2016.</p>
+    </div>
+</div>
 <?php
 loadfoot();
-if (isset($_POST['submit'])){
-    function randomkeys(){
-	    $output='';
-	    for($a=0;$a<20; $a++){
-	    	$output.=chr(mt_rand(33, 126));    
-	    }
-     	return md5($output);
-    }
-    function inserttoken(){
-        $token = randomkeys();
-        global $m;
-        $m->query("INSERT INTO `".DB_PREFIX."ixlab_adminer` (`id`, `token`, `expire_time`) VALUES (NULL, '{$token}', '".(time()+600)."');");
-        return $token;
-    }
-    setcookie("adminer_token", inserttoken(), time()+600, "/");
-    header("Location:./plugins/ixlab_adminer/?server=".DB_HOST."&username=".DB_USER."&db=".DB_NAME);
-}
-?>

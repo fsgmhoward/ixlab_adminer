@@ -121,23 +121,19 @@ function page_footer($missing = "") {
 </div>
 
 <?php switch_lang(); ?>
-<?php if ($missing != "auth") { 
-	if (!defined('TIEBASIGNER_INSTALLED')) {?>
-<form action="" method="post">
-<p class="logout">
-<input type="submit" name="logout" value="<?php echo lang('Logout'); ?>" id="logout">
-<input type="hidden" name="token" value="<?php echo $token; ?>">
-</p>
-</form>
-<?php }else{?>
-<p class="logout">
-<input type="button" name="logout" value="<?php echo lang('Logout'); ?>" id="logout" onclick="window.location.href='./?logout'">
-<input type="button" name="logout_and_return" value="<?php echo lang('Logout and return to the Tieba Signer'); ?>" id="logout_and_return" onclick="window.location.href='./?logout&return'">
-</p>
-<?php }} ?>
-<div id="menu">
-<?php $adminer->navigation($missing); ?>
-</div>
-<script type="text/javascript">setupSubmitHighlight(document);</script>
-<?php
+<?php if ($missing != "auth") { ?>
+	<form action="" method="post">
+		<p class="logout">
+			<input type="submit" name="logout" value="<?php echo lang('Logout'); ?>" id="logout">
+			<input type="hidden" name="token" value="<?php echo $token; ?>">
+		</p>
+	</form>
+	<?php
+	}
+	?>
+	<div id="menu">
+		<?php $adminer->navigation($missing); ?>
+	</div>
+	<script type="text/javascript">setupSubmitHighlight(document);</script>
+	<?php
 }
