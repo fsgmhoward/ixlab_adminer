@@ -1,16 +1,25 @@
 # IXLab_Adminer
-Adminer Database Manager for MoeNetwork Tiebasigner
+用于萌网（MoeNet Inc）贴吧云签到的Adminer数据库管理器
 
-## Usage
-1. Download the release. Please remember to download the 'adminer_for_adminer_*******.zip' instead of the source code.
-2. Directly upload it via the plugin-installation page.
-3. Successfully installed.
+## 特色
+* 体积小巧（跟PhpMyAdmin之类的大型数据库管理器相比）
+* 自动读取云签到的数据库设置，实现管理员一键登录数据库
+* 更多介绍请看[我的博客](https://blog.ixnet.work/2016/01/22/adminer/)。
 
-## More Information
-Chinese description here(中文介绍可看): [My Blog](https://blog.ixnet.work/2016/01/22/adminer/). 
-The update log can also be seen there.
+## 安装方法
+1. 在Release里面下载最新版本，记得下载`adminer_for_adminer_*******.zip`而不是源码ZIP以直接上传安装。
+2. 在插件安装页面上传ZIP文件进行安装。
+3. 成功安装。
 
-## License
+## 更多信息
+* 请看[我的博客](https://blog.ixnet.work/2016/01/22/adminer/)。
+* 想用百度网盘下载的也可以进入我的博文，里面有网盘地址。
+* 若有问题欢迎反馈到howard@ixnet.work，或者是https://blog.ixnet.work的留言板。
+
+## 更新内容
+请看Release界面。
+
+## 开源协议（Apache License 2.0）
 Copyright 2016 Howard Liu
 
 Licensed under the Apache License, Version 2.0 (the "License");
