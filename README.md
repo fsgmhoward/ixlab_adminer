@@ -7,14 +7,14 @@
 * 更多介绍请看[我的博客](https://blog.ixnet.work/2016/01/22/adminer/)。
 
 ## 安装方法
-1. 在Release里面下载最新版本，记得下载`adminer_for_adminer_*******.zip`而不是源码ZIP以直接上传安装。
+1. 在Release里面下载最新版本，记得下载`adminer_for_moenet_*.*_********.zip`而不是源码ZIP以直接上传安装。
 2. 在插件安装页面上传ZIP文件进行安装。
 3. 成功安装。
 
 ## 更多信息
 * 请看[我的博客](https://blog.ixnet.work/2016/01/22/adminer/)。
 * 想用百度网盘下载的也可以进入我的博文，里面有网盘地址。
-* 若有问题欢迎反馈到howard@ixnet.work，或者是https://blog.ixnet.work的留言板。
+* 若有问题欢迎反馈到howard#ixnet.work，或者是博客的留言板。
 
 ## 更新内容
 请看Release界面。
